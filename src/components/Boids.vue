@@ -2,7 +2,6 @@
 import { ref, onMounted, computed } from 'vue'
 import { useElementSize, useRafFn, useMouse } from '@vueuse/core'
 
-const showControls = ref(false)
 const debug = ref(false)
 const boidCount = ref(180)
 const visionRadius = ref(100)
@@ -308,14 +307,9 @@ onMounted(() => {
 
 <template>
   <div class="debug-panel">
-    <div>
-      <label>
-        <input type="checkbox" v-model="showControls" />
-        Show Controls
-      </label>
-    </div>
+    <details>
+      <summary>Conrols</summary>
 
-    <div v-if="showControls">
       <div>mousePosition: {{ mouse }}</div>
 
       <label>
@@ -409,7 +403,7 @@ onMounted(() => {
           {{ maxMouseForce }}
         </label>
       </div>
-    </div>
+    </details>
   </div>
 
   <div ref="canvasParent" class="boids-container" style="z-index: -1">
