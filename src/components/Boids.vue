@@ -425,11 +425,9 @@ onMounted(() => {
 
 .debug-panel {
   background-color: white;
-  border: 1px solid lightgray;
-  display: grid;
-  gap: 10px;
   padding: 10px;
   margin: 10px;
   width: fit-content;
+  border-radius: 4px;
 }
 </style>
