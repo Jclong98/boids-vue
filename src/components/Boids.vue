@@ -318,42 +318,42 @@ onMounted(() => {
       </label>
 
       <div>
-        <label>
-          Number of boids
+        <label class="input-grid">
+          <span>Number of boids</span>
           <input type="range" v-model="boidCount" min="1" max="500" />
-          {{ boidCount }}
+          <input type="number" v-model="boidCount" />
         </label>
       </div>
 
       <hr />
 
       <div>
-        <label>
-          Vision Radius
+        <label class="input-grid">
+          <span>Vision Radius</span>
           <input type="range" v-model="visionRadius" min="0" max="200" />
-          {{ visionRadius }}
+          <input type="number" v-model="visionRadius" />
         </label>
       </div>
       <div>
-        <label>
-          Personal Space Radius
+        <label class="input-grid">
+          <span>Personal Space Radius</span>
           <input type="range" v-model="personalSpaceRadius" min="0" max="200" />
-          {{ personalSpaceRadius }}
+          <input type="number" v-model="personalSpaceRadius" />
         </label>
       </div>
 
       <hr />
 
       <div>
-        <label>
-          Maxumum Speed
+        <label class="input-grid">
+          <span>Maxumum Speed</span>
           <input type="range" v-model="maxSpeed" min="0" max="5" step="0.1" />
-          {{ maxSpeed }}
+          <input type="number" v-model="maxSpeed" />
         </label>
       </div>
       <div>
-        <label>
-          Max Alignment Force
+        <label class="input-grid">
+          <span>Max Alignment Force</span>
           <input
             type="range"
             v-model="maxAlignmentForce"
@@ -361,12 +361,12 @@ onMounted(() => {
             max="0.02"
             step="0.001"
           />
-          {{ maxAlignmentForce }}
+          <input type="number" v-model="maxAlignmentForce" />
         </label>
       </div>
       <div>
-        <label>
-          Cohesion Force
+        <label class="input-grid">
+          <span>Cohesion Force</span>
           <input
             type="range"
             v-model="maxCohesionForce"
@@ -374,12 +374,12 @@ onMounted(() => {
             max="0.02"
             step="0.001"
           />
-          {{ maxCohesionForce }}
+          <input type="number" v-model="maxCohesionForce" />
         </label>
       </div>
       <div>
-        <label>
-          SeparationForce Force
+        <label class="input-grid">
+          <span>SeparationForce Force</span>
           <input
             type="range"
             v-model="maxSeparationForce"
@@ -387,12 +387,12 @@ onMounted(() => {
             max="0.05"
             step="0.001"
           />
-          {{ maxSeparationForce }}
+          <input type="number" v-model="maxSeparationForce" />
         </label>
       </div>
       <div>
-        <label>
-          Mouse Force
+        <label class="input-grid">
+          <span>Mouse Force</span>
           <input
             type="range"
             v-model="maxMouseForce"
@@ -400,7 +400,7 @@ onMounted(() => {
             max="0.01"
             step="0.001"
           />
-          {{ maxMouseForce }}
+          <input type="number" v-model="maxMouseForce" />
         </label>
       </div>
     </details>
@@ -429,5 +429,16 @@ onMounted(() => {
   margin: 10px;
   width: fit-content;
   border-radius: 4px;
+}
+
+.input-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.5fr;
+  grid-gap: 10px;
+  text-align: right;
+}
+
+.input-grid input[type='number'] {
+  width: 60px;
 }
 </style>
