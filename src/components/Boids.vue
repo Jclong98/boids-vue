@@ -380,7 +380,7 @@ onMounted(() => {
     </div>
     <div>
       <label class="input-grid">
-        <span>SeparationForce Force</span>
+        <span>Separation Force</span>
         <input
           type="range"
           v-model="maxSeparationForce"
