@@ -306,105 +306,105 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="debug-panel">
-    <details>
-      <summary>Conrols</summary>
+  <details class="debug-panel">
+    <summary>Conrols</summary>
 
-      <div>mousePosition: {{ mouse }}</div>
-
+    <div style="padding-top: 0.5rem">
       <label>
         <input type="checkbox" v-model="debug" />
         Show debug info
       </label>
+    </div>
 
-      <div>
-        <label class="input-grid">
-          <span>Number of boids</span>
-          <input type="range" v-model="boidCount" min="1" max="500" />
-          <input type="number" v-model="boidCount" />
-        </label>
-      </div>
+    <hr />
 
-      <hr />
+    <div>
+      <label class="input-grid">
+        <span>Number of boids</span>
+        <input type="range" v-model="boidCount" min="1" max="500" />
+        <input type="number" v-model="boidCount" />
+      </label>
+    </div>
 
-      <div>
-        <label class="input-grid">
-          <span>Vision Radius</span>
-          <input type="range" v-model="visionRadius" min="0" max="200" />
-          <input type="number" v-model="visionRadius" />
-        </label>
-      </div>
-      <div>
-        <label class="input-grid">
-          <span>Personal Space Radius</span>
-          <input type="range" v-model="personalSpaceRadius" min="0" max="200" />
-          <input type="number" v-model="personalSpaceRadius" />
-        </label>
-      </div>
+    <hr />
 
-      <hr />
+    <div>
+      <label class="input-grid">
+        <span>Vision Radius</span>
+        <input type="range" v-model="visionRadius" min="0" max="200" />
+        <input type="number" v-model="visionRadius" />
+      </label>
+    </div>
+    <div>
+      <label class="input-grid">
+        <span>Personal Space Radius</span>
+        <input type="range" v-model="personalSpaceRadius" min="0" max="200" />
+        <input type="number" v-model="personalSpaceRadius" />
+      </label>
+    </div>
 
-      <div>
-        <label class="input-grid">
-          <span>Maxumum Speed</span>
-          <input type="range" v-model="maxSpeed" min="0" max="5" step="0.1" />
-          <input type="number" v-model="maxSpeed" />
-        </label>
-      </div>
-      <div>
-        <label class="input-grid">
-          <span>Max Alignment Force</span>
-          <input
-            type="range"
-            v-model="maxAlignmentForce"
-            min="0"
-            max="0.02"
-            step="0.001"
-          />
-          <input type="number" v-model="maxAlignmentForce" />
-        </label>
-      </div>
-      <div>
-        <label class="input-grid">
-          <span>Cohesion Force</span>
-          <input
-            type="range"
-            v-model="maxCohesionForce"
-            min="0"
-            max="0.02"
-            step="0.001"
-          />
-          <input type="number" v-model="maxCohesionForce" />
-        </label>
-      </div>
-      <div>
-        <label class="input-grid">
-          <span>SeparationForce Force</span>
-          <input
-            type="range"
-            v-model="maxSeparationForce"
-            min="0"
-            max="0.05"
-            step="0.001"
-          />
-          <input type="number" v-model="maxSeparationForce" />
-        </label>
-      </div>
-      <div>
-        <label class="input-grid">
-          <span>Mouse Force</span>
-          <input
-            type="range"
-            v-model="maxMouseForce"
-            min="0"
-            max="0.01"
-            step="0.001"
-          />
-          <input type="number" v-model="maxMouseForce" />
-        </label>
-      </div>
-    </details>
-  </div>
+    <hr />
+
+    <div>
+      <label class="input-grid">
+        <span>Maxumum Speed</span>
+        <input type="range" v-model="maxSpeed" min="0" max="5" step="0.1" />
+        <input type="number" v-model="maxSpeed" />
+      </label>
+    </div>
+    <div>
+      <label class="input-grid">
+        <span>Max Alignment Force</span>
+        <input
+          type="range"
+          v-model="maxAlignmentForce"
+          min="0"
+          max="0.02"
+          step="0.001"
+        />
+        <input type="number" v-model="maxAlignmentForce" />
+      </label>
+    </div>
+    <div>
+      <label class="input-grid">
+        <span>Cohesion Force</span>
+        <input
+          type="range"
+          v-model="maxCohesionForce"
+          min="0"
+          max="0.02"
+          step="0.001"
+        />
+        <input type="number" v-model="maxCohesionForce" />
+      </label>
+    </div>
+    <div>
+      <label class="input-grid">
+        <span>SeparationForce Force</span>
+        <input
+          type="range"
+          v-model="maxSeparationForce"
+          min="0"
+          max="0.05"
+          step="0.001"
+        />
+        <input type="number" v-model="maxSeparationForce" />
+      </label>
+    </div>
+    <div>
+      <label class="input-grid">
+        <span>Mouse Force</span>
+        <input
+          type="range"
+          v-model="maxMouseForce"
+          min="0"
+          max="0.01"
+          step="0.001"
+        />
+        <input type="number" v-model="maxMouseForce" />
+      </label>
+    </div>
+  </details>
 
   <div ref="canvasParent" class="boids-container" style="z-index: -1">
     <canvas ref="canvasElement" :width="width" :height="height"></canvas>
