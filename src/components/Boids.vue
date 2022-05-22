@@ -11,6 +11,8 @@ const maxAlignmentForce = ref(0.003)
 const maxCohesionForce = ref(0.001)
 const maxSeparationForce = ref(0.004)
 const maxMouseForce = ref(0.0)
+const color = ref('tomato')
+const randomColors = ref(true)
 
 const canvasParent = ref()
 const { width, height } = useElementSize(canvasParent)
@@ -81,6 +83,7 @@ class Boid {
     this.velocity = new Vector(Math.random() * 2 - 1, Math.random() * 2 - 1)
     this.velocity.setMagnitude(maxSpeed.value)
     this.acceleration = new Vector(0, 0)
+    this.assignedColor = `hsl(${Math.random() * 360}, 100%, 50%)`
   }
 
   update(boids) {
@@ -225,7 +228,8 @@ class Boid {
    */
   draw() {
     if (!ctx.value) return
-    ctx.value.fillStyle = 'tomato'
+
+    ctx.value.fillStyle = randomColors.value ? this.assignedColor : color.value
 
     // draw a circle at the boid's position
     ctx.value.beginPath()
@@ -403,6 +407,20 @@ onMounted(() => {
         />
         <input type="number" v-model="maxMouseForce" />
       </label>
+    </div>
+
+    <hr />
+
+    <div>
+      <label class="input-grid">
+        <span>Color</span>
+        <input type="color" v-model="color" />
+      </label>
+    </div>
+
+    <div class="input-grid" style="margin-top: 0.5rem">
+      <label for="random-colors"> Random Colors </label>
+      <input type="checkbox" id="random-colors" v-model="randomColors" />
     </div>
   </details>
 
