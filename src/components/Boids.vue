@@ -13,6 +13,7 @@ const maxSeparationForce = ref(0.004)
 const maxMouseForce = ref(0.0)
 const color = ref('tomato')
 const randomColors = ref(true)
+const drawAsTriangles = ref(false)
 
 const canvasParent = ref()
 const { width, height } = useElementSize(canvasParent)
@@ -231,30 +232,32 @@ class Boid {
 
     ctx.value.fillStyle = randomColors.value ? this.assignedColor : color.value
 
-    // draw a circle at the boid's position
-    // ctx.value.beginPath()
-    // ctx.value.arc(this.position.x, this.position.y, 5, 0, Math.PI * 2)
-    // ctx.value.fill()
-
-    // draw a triangle in the direction of the boid's velocity
-    ctx.value.beginPath()
-    ctx.value.moveTo(
-      this.position.x + this.velocity.x * 20,
-      this.position.y + this.velocity.y * 20
-    )
-    ctx.value.lineTo(
-      this.position.x - this.velocity.y * 10,
-      this.position.y + this.velocity.x * 10
-    )
-    ctx.value.lineTo(
-      this.position.x + this.velocity.y * 10,
-      this.position.y - this.velocity.x * 10
-    )
-    ctx.value.lineTo(
-      this.position.x + this.velocity.x * 20,
-      this.position.y + this.velocity.y * 20
-    )
-    ctx.value.fill()
+    if (drawAsTriangles.value) {
+      // draw a triangle in the direction of the boid's velocity
+      ctx.value.beginPath()
+      ctx.value.moveTo(
+        this.position.x + this.velocity.x * 20,
+        this.position.y + this.velocity.y * 20
+      )
+      ctx.value.lineTo(
+        this.position.x - this.velocity.y * 10,
+        this.position.y + this.velocity.x * 10
+      )
+      ctx.value.lineTo(
+        this.position.x + this.velocity.y * 10,
+        this.position.y - this.velocity.x * 10
+      )
+      ctx.value.lineTo(
+        this.position.x + this.velocity.x * 20,
+        this.position.y + this.velocity.y * 20
+      )
+      ctx.value.fill()
+    } else {
+      // draw a circle at the boid's position
+      ctx.value.beginPath()
+      ctx.value.arc(this.position.x, this.position.y, 5, 0, Math.PI * 2)
+      ctx.value.fill()
+    }
 
     if (!debug.value) return
 
@@ -441,6 +444,11 @@ onMounted(() => {
     <div class="input-grid" style="margin-top: 0.5rem">
       <label for="random-colors"> Random Colors </label>
       <input type="checkbox" id="random-colors" v-model="randomColors" />
+    </div>
+
+    <div class="input-grid" style="margin-top: 0.5rem">
+      <label for="draw-as-triangles"> Draw as Triangles </label>
+      <input type="checkbox" id="draw-as-triangles" v-model="drawAsTriangles" />
     </div>
   </details>
 
