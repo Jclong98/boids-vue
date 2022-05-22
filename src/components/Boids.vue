@@ -232,8 +232,28 @@ class Boid {
     ctx.value.fillStyle = randomColors.value ? this.assignedColor : color.value
 
     // draw a circle at the boid's position
+    // ctx.value.beginPath()
+    // ctx.value.arc(this.position.x, this.position.y, 5, 0, Math.PI * 2)
+    // ctx.value.fill()
+
+    // draw a triangle in the direction of the boid's velocity
     ctx.value.beginPath()
-    ctx.value.arc(this.position.x, this.position.y, 5, 0, Math.PI * 2)
+    ctx.value.moveTo(
+      this.position.x + this.velocity.x * 20,
+      this.position.y + this.velocity.y * 20
+    )
+    ctx.value.lineTo(
+      this.position.x - this.velocity.y * 10,
+      this.position.y + this.velocity.x * 10
+    )
+    ctx.value.lineTo(
+      this.position.x + this.velocity.y * 10,
+      this.position.y - this.velocity.x * 10
+    )
+    ctx.value.lineTo(
+      this.position.x + this.velocity.x * 20,
+      this.position.y + this.velocity.y * 20
+    )
     ctx.value.fill()
 
     if (!debug.value) return
